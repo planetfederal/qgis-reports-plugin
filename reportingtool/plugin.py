@@ -70,10 +70,8 @@ class ReportingTool:
             pass
 
     def run(self):
-        info = [qgissysinfo.systeminfo.pythonInfo()]
-        info.append(qgissysinfo.systeminfo.qtInfo())
+        info = qgissysinfo.info()
 
-        fullInfo = "\n\n".join(info)
         reportsDir = os.path.join(QgsApplication.qgisSettingsDirPath(), 'reports')
         if not os.path.exists(reportsDir):
             QDir().mkpath(reportsDir)
@@ -87,9 +85,9 @@ class ReportingTool:
             fullPath = os.path.join(reportsDir, filename)
 
         with open(fullPath, "w") as f:
-            f.write(fullInfo)
+            f.write(info)
 
-        dlg = ReportDialog(fullInfo, fullPath)
+        dlg = ReportDialog(info, fullPath)
         dlg.exec_()
 
         
