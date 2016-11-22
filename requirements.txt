@@ -1,0 +1,3 @@
+https://github.com/boundlessgeo/qgissysinfo.git#egg=qgissysinfo
+
+# test requirements

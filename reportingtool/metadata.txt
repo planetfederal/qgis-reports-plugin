@@ -1,0 +1,23 @@
+[general]
+name=Reporting tool
+description=
+about=<p></p>
+category=Plugins
+qgisMinimumVersion=2.0
+version=1.0
+
+author=Boundless
+email=info@boundlessgeo.com
+
+roles=desktop-qgis-plugin-dev
+
+icon=icons/desktop.svg
+
+tags=boundless
+
+homepage=http://boundlessgeo.com
+tracker=https://github.com/boundlessgeo/qgis-reportingtool-plugin/issues
+repository=https://github.com/boundlessgeo/qgis-reportingtool-plugin
+
+experimental=False
+deprecated=False
