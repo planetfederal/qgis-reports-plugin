@@ -62,6 +62,8 @@ class ReportingTool:
         self.iface.addPluginToMenu("Reporting tool", self.helpAction)
 
     def unload(self):
+        self.iface.removePluginMenu("Reporting tool", self.helpAction)
+        self.iface.removePluginMenu("Reporting tool", self.action)
         try:
             from .tests import testerplugin
             from qgistester.tests import removeTestModule
