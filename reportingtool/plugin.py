@@ -70,7 +70,7 @@ class ReportingTool:
             pass
 
     def run(self):
-        info = qgissysinfo.info()
+        info = qgissysinfo.info_as_text()
 
         reportsDir = os.path.join(QgsApplication.qgisSettingsDirPath(), 'reports')
         if not os.path.exists(reportsDir):
