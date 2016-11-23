@@ -29,6 +29,7 @@ from qgis.core import QgsApplication
 import qgissysinfo.systeminfo
 import os
 import datetime
+import createreport
 
 class ReportingTool:
     def __init__(self, iface):
@@ -72,22 +73,7 @@ class ReportingTool:
             pass
 
     def run(self):
-        info = qgissysinfo.info_as_text()
-
-        reportsDir = os.path.join(QgsApplication.qgisSettingsDirPath(), 'reports')
-        if not os.path.exists(reportsDir):
-            QDir().mkpath(reportsDir)
-
-        i = 1
-        filename = "%s-%s.txt" % (datetime.date.today().isoformat(), i)
-        fullPath = os.path.join(reportsDir, filename)
-        while os.path.exists(fullPath):
-            i += 1
-            filename = "%s-%s.txt" % (datetime.date.today().isoformat(), i)
-            fullPath = os.path.join(reportsDir, filename)
-
-        with open(fullPath, "w") as f:
-            f.write(info)
+        fullPath = createreport.createreport()
 
         dlg = ReportDialog(info, fullPath)
         dlg.exec_()
