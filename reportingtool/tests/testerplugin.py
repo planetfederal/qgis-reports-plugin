@@ -5,7 +5,7 @@ from qgis.utils import *
 from qgis.core import *
 import os
 import unittest
-
+from qgissysinfo.tests import QgisSysInfoTests
 try:
     from qgistester.test import Test
     from qgistester.utils import layerFromName
@@ -19,24 +19,17 @@ def functionalTests():
     except:
         return []
 
-    def sampleMethod(self):
-        pass
 
-    sampleTest = Test("Sample test")
-    sampleTest.addStep("Sample step", _sampleMethod)
+    infoTests = Test("Verify report dialog")
+    infoTests.addStep("Open the reporting dialog and verify that it shows system information")
+    infoTests.addStep("Verify that 'Copy to clipboard' button works correctly")
 
-    return [sampleTest]
-
-
-class ReportingToolTest(unittest.TestCase):
-
-    def testSampleTest(self):
-        pass
+    return [infoTests]
 
 
 def pluginSuite():
     suite = unittest.TestSuite()
-    suite.addTests(unittest.makeSuite(MilStd2525Test, 'test'))
+    suite.addTests(unittest.makeSuite(QgisSysInfoTests, 'test'))
     return suite
 
 def unitTests():
