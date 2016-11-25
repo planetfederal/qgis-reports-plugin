@@ -73,7 +73,7 @@ class ReportingTool:
             pass
 
     def run(self):
-        fullPath = createreport.createreport()
+        fullPath, info = createreport.createreport()
 
         dlg = ReportDialog(info, fullPath)
         dlg.exec_()

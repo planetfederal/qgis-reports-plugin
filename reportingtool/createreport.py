@@ -18,7 +18,6 @@ def mkdir(newdir):
 
 def createreport():
     p = os.path.join(os.path.abspath("."), 'ext-libs')
-    print p
     site.addsitedir(p)
     import qgissysinfo.systeminfo
     info = qgissysinfo.info_as_text()
@@ -38,7 +37,7 @@ def createreport():
     with open(fullPath, "w") as f:
         f.write(info)
 
-    return fullPath
+    return fullPath, info
 
 if __name__ == "__main__":
     path = createreport()

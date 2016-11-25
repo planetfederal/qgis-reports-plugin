@@ -2,8 +2,8 @@ import os
 import subprocess
 from qgis.PyQt import uic
 import sys
-from qgis.PyQt.QtGui import QApplication
-
+from qgis.PyQt.QtGui import QApplication, QSizePolicy
+from qgis.gui import QgsMessageBar
 WIDGET, BASE = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), 'reportdialog.ui'))
 
