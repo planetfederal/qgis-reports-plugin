@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
 import os
 import datetime
 import site
@@ -27,11 +28,11 @@ def createreport():
         mkdir(reportsDir)
 
     i = 1
-    filename = "%s-%s.txt" % (datetime.date.today().isoformat(), i)
+    filename = "{}-{}.txt".format(datetime.date.today().isoformat(), i)
     fullPath = os.path.join(reportsDir, filename)
     while os.path.exists(fullPath):
         i += 1
-        filename = "%s-%s.txt" % (datetime.date.today().isoformat(), i)
+        filename = "{}-{}.txt".format(datetime.date.today().isoformat(), i)
         fullPath = os.path.join(reportsDir, filename)
 
     with open(fullPath, "w") as f:
@@ -41,4 +42,5 @@ def createreport():
 
 if __name__ == "__main__":
     path = createreport()
-    print "Report created at " + path
+    # fix_print_with_import
+    print("Report created at " + path)

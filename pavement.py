@@ -1,19 +1,19 @@
+from __future__ import print_function
+from builtins import range
 # -*- coding: utf-8 -*-
 #
 # (c) 2016 Boundless, http://boundlessgeo.com
 # This code is licensed under the GPL 2.0 license.
 #
-from cStringIO import StringIO
-import ConfigParser
-from datetime import date, datetime
-import fnmatch
+
 import os
+import fnmatch
+import zipfile
+import shutil
+
 from paver.easy import *
 # this pulls in the sphinx target
 from paver.doctools import html
-import xmlrpclib
-import zipfile
-import shutil
 
 options(
     plugin = Bunch(
@@ -55,7 +55,7 @@ def setup(options):
     for req in runtime + test:
         if '#egg' in req:
             urlspec, req = req.split('#egg=')
-            localpath = ext_src / req            
+            localpath = ext_src / req
             if localpath.exists():
                 cwd = os.getcwd()
                 os.chdir(localpath)
@@ -130,7 +130,7 @@ def make_zip(zip, options):
     def filter_excludes(files):
         if not files: return []
         # to prevent descending into dirs, modify the list in place
-        for i in xrange(len(files) - 1, -1, -1):
+        for i in range(len(files) - 1, -1, -1):
             f = files[i]
             if exclude(f):
                 files.remove(f)
@@ -146,12 +146,12 @@ def make_zip(zip, options):
         for f in files:
             relpath = os.path.join(options.plugin.name, "docs", os.path.relpath(root, options.sphinx.builddir))
             zipFile.write(path(root) / f, path(relpath) / f)
- 
+
 
 @task
 def builddocs(options):
     sh("git submodule init")
-    sh("git submodule update")    
+    sh("git submodule update")
     cwd = os.getcwd()
     os.chdir(options.sphinx.docroot)
     sh("make html")

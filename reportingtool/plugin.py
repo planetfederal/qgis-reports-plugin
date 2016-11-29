@@ -15,6 +15,8 @@
 *                                                                         *
 ***************************************************************************
 """
+from __future__ import absolute_import
+from builtins import object
 
 __author__ = 'Boundless'
 __date__ = 'November 2016'
@@ -22,21 +24,25 @@ __copyright__ = '(C) 2016 Boundless, http://boundlessgeo.com'
 
 # This will get replaced with a git SHA1 when you do a git archive
 
-from qgis.PyQt.QtCore import QDir
-from qgis.PyQt.QtGui import QIcon, QAction
-from reportdialog import ReportDialog
-from qgis.core import QgsApplication
-import qgissysinfo.systeminfo
 import os
 import datetime
-import createreport
+
+from qgis.PyQt.QtCore import QDir
+from qgis.PyQt.QtGui import QIcon, QAction
+
+from qgis.core import QgsApplication
+
+import qgissysinfo.systeminfo
 import webbrowser
 
-class ReportingTool:
+from reportingtool import createreport
+from reportingtool.reportdialog import ReportDialog
+
+class ReportingTool(object):
     def __init__(self, iface):
         self.iface = iface
         try:
-            from .tests import testerplugin
+            from reportingtool.tests import testerplugin
             from qgistester.tests import addTestModule
             addTestModule(testerplugin, "Reporting tool")
         except:
@@ -67,7 +73,7 @@ class ReportingTool:
         self.iface.removePluginMenu("Reporting tool", self.helpAction)
         self.iface.removePluginMenu("Reporting tool", self.action)
         try:
-            from .tests import testerplugin
+            from reportingtool.tests import testerplugin
             from qgistester.tests import removeTestModule
             removeTestModule(testerplugin, "Reporting tool")
         except:
@@ -78,5 +84,3 @@ class ReportingTool:
 
         dlg = ReportDialog(info, fullPath)
         dlg.exec_()
-
-        
