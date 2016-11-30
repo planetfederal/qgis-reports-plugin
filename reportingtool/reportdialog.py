@@ -25,7 +25,7 @@ class ReportDialog(BASE, WIDGET):
 
     def copyToClipboard(self):
         clipboard = QApplication.clipboard()
-        clipboard.setText(self.textBrowser.text())
+        clipboard.setText(self.textBrowser.toPlainText())
         self.bar.pushMessage("", "Report text was copied to the clipboard", level=QgsMessageBar.SUCCESS, duration=5)
 
     def openReportFile(self):

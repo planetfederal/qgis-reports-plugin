@@ -1,3 +1,5 @@
 import sys; sys.__plen = len(sys.path)
-./qgissysinfo-0.1-py2.7.egg
-import sys; new=sys.path[sys.__plen:]; del sys.path[sys.__plen:]; p=getattr(sys,'__egginsert',0); sys.path[p:p]=new; sys.__egginsert = p+len(new)
+./qgissysteminfo-0.1.0-py2.7.egg
+./py_cpuinfo-0.2.3-py2.7.egg
+./psutil-5.0.0-py2.7-macosx-10.12-intel.egg
+import sys; new = sys.path[sys.__plen:]; del sys.path[sys.__plen:]; p = getattr(sys, '__egginsert', 0); sys.path[p:p] = new; sys.__egginsert = p + len(new)
