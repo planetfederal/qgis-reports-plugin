@@ -30,6 +30,7 @@ import qgissysinfo.systeminfo
 import os
 import datetime
 import createreport
+import webbrowser
 
 class ReportingTool:
     def __init__(self, iface):
