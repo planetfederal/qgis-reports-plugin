@@ -1,26 +1,24 @@
 sudo: required
 addons:
-  ssh_known_hosts: qgis-dev.boundlessgeo.com
   hosts:
-    - boundless-test
+  - boundless-test
 services:
-    - docker
+- docker
 env:
   global:
     - PLUGIN_NAME=reportingtool
   matrix:
-    - QGIS_VERSION_TAG=release
-    - QGIS_VERSION_TAG=master_2
-    - QGIS_VERSION_TAG=master
+    - QGIS_VERSION_TAG=release PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
+    - QGIS_VERSION_TAG=master_2 PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
+    - QGIS_VERSION_TAG=master PYTHON_EXECUTABLE=python3 PIP_EXECUTABLE=pip3
 before_install:
-    - docker pull boundlessgeo/qgis-testing-environment:${QGIS_VERSION_TAG}
-    - docker tag boundlessgeo/qgis-testing-environment:${QGIS_VERSION_TAG} qgis-testing-environment
+- docker pull boundlessgeo/qgis-testing-environment:${QGIS_VERSION_TAG}
+- docker tag boundlessgeo/qgis-testing-environment:${QGIS_VERSION_TAG} qgis-testing-environment
 install:
-    - docker run -d --name qgis-testing-environment -v ${TRAVIS_BUILD_DIR}:/tests_directory -e DISPLAY=:99 qgis-testing-environment
-    - sleep 10
-    - docker exec -it qgis-testing-environment sh -c "qgis_setup.sh ${PLUGIN_NAME}"
-    - docker exec -it qgis-testing-environment sh -c "pip install paver"
-    - docker exec -it qgis-testing-environment sh -c "cd /tests_directory tests_directory && paver setup && paver package --teststests_directory && paver setup paver setup tests_directory && paver setuptests_directory && paver setup paver package --tests"
-    - docker exec -it qgis-testing-environment sh -c "ln -s /tests_directory/${PLUGIN_NAME} /root/.qgis2/python/plugins/${PLUGIN_NAME}"
+- docker run -d --name qgis-testing-environment -v ${TRAVIS_BUILD_DIR}:/tests_directory -e DISPLAY=:99 qgis-testing-environment
+- sleep 10
+- docker exec -it qgis-testing-environment sh -c "qgis_setup.sh ${PLUGIN_NAME}"
+- docker exec -it qgis-testing-environment sh -c "$PIP_EXECUTABLE install paver"
 script:
-    - docker exec -it qgis-testing-environment sh -c "echo '${PLUGIN_NAME} has no unit tests yet, please create them and add here'"
+- docker exec -it qgis-testing-environment sh -c "cd /tests_directory && paver setup && paver package --tests"
+- docker exec -it qgis-testing-environment sh -c "qgis_testrunner.sh ${PLUGIN_NAME}.tests.testerplugin.run_tests"
