@@ -161,8 +161,11 @@ def builddocs(options):
     sh("git submodule init")
     sh("git submodule update")
     cwd = os.getcwd()
-    os.chdir(options.sphinx.docroot)
-    sh("make html")
+    try:
+        os.chdir(options.sphinx.docroot)
+        sh("make html")
+    except OSError as e:
+        print("WARNING! Could not build the docs! %s" % e)
     os.chdir(cwd)
 
 

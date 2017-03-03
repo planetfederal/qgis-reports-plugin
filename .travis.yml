@@ -6,11 +6,13 @@ services:
 - docker
 env:
   global:
-    - PLUGIN_NAME=reportingtool
+  - PLUGIN_NAME=reportingtool
+  - secure: "ANyaylherbXBIdMcBgX94JT0RfoSxaQmFlGj8Zp+t/wxX3NSGqg3dr8ARkw6Jt4kxk3FQPG6gSXTl0j3gmzNP/+kl4AXuyJz2Z7TSu0s4aFeQiRR4r4wAAVZ89GbPsNEmoPhTAZTFpPiuk1Lu59HJ6Lu767jAlTKZ6/siF0LtXpNyc1IK+oQcepT8cXrivmFakkNAJ5uQKyMFbG4gMfyGq4CKauCg1/2l61ysemixm7xkrzAS78gzePns5FYNk0KgC91ZusMgRrvbk+9qr8pJpPeW3NkRUzVOtcp5mmKWQixuQJ19K/fiLTV8XwmiRlQZLLkINhb0rYiVJBpoHJRyqFD7oh56CW9vPp5oOrzFptLGIM8n/N+VhG71LJNW3KzxaY00ToPruYseCokuxdyLUioQwXok2bw26ZyeeCyfXvT2/cE7q/ApP+lexkOnz5tDL53/n9vgyfd9RjXj+56zNs6W2kTJwQ+cZbrCvF8jHCt3uHLHR/Fh4SCPRDp4CRLsMZVhZG3X90GV047ssEMNIH0T8nI+aqXnYShL9MWS+IvU47bfJqgPRXayRcm+1iwkporlD4eTrmACBvqEnYdp99MhJ1G2VC6JC8RCrHWaUqtYV/YqN2Qebvz2qND64FwNTaHgPcXRl9Q0MgMT5mtXF5MZoSzMJ9DGVRiZ14xQnc="
+  - secure: "JDYdAwYvR9g2f8BYbQ8CvqDAQGQ/7ZYb6Yek/UEzenAcRXlSsGc+DF7t0OuuSM36LoGJkw3G3wfRwS44GEFnk3h6sLPVgy7dtmIXROITEYtZVJb4NGuYn/bKKTt36ksI578KcBMwhsLajKfvFkbjsjbkb6tClm0FqEMO/z9HprDJrQkuqYir77aj5Wk/8TuagtM1TPX5YAJUi0+njg4+oG5GAJGUVn8L2McRetxzCEcdk3/zCnUzh4BQH7CQAb6YilPdiitDfSFQES4frHzIfhyieiuZ0PhxqVx/Vo5Pbz8uOKE3ctiPrainKb7PQ8/6vvWxs8EaOMMHpyv0f4USzpFhnaUrf8XfV96wjJPEnK87foHD8I1lc3M0Wtt8Xah0wm+nr7kvMXuzXBc8Vdo337mZ4BkGK/MstrI5s65ggvIsEYzhMgok9Em+6G5ct90713ZwU8xMhJfnJ9cSnrjHa/wUXa5bg3OhdV6RM7UgIvig/g3ejUChzBa9Z8qDqWljmF6v6zeJ+sFA9Jd4cNidgCO/tPGBRbIIYoLoysyT1S3qJSQFxCV+nxsniqtP2H3h7u57BbXVypuZn0yQI3V97a8TBDrUnk01HasdO9T21z2zcWgLosoxPd+xY49T1tJypf+YyKTzXiNIXKChWe8qhVyslUxlofnWxZDWarafW+8="
   matrix:
-    - QGIS_VERSION_TAG=release PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
-    - QGIS_VERSION_TAG=master_2 PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
-    - QGIS_VERSION_TAG=master PYTHON_EXECUTABLE=python3 PIP_EXECUTABLE=pip3
+  - QGIS_VERSION_TAG=release PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
+  - QGIS_VERSION_TAG=master_2 PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
+  - QGIS_VERSION_TAG=master PYTHON_EXECUTABLE=python3 PIP_EXECUTABLE=pip3
 matrix:
   allow_failures:
   - env: QGIS_VERSION_TAG=master PYTHON_EXECUTABLE=python3 PIP_EXECUTABLE=pip3
@@ -20,8 +22,30 @@ before_install:
 install:
 - docker run -d --name qgis-testing-environment -v ${TRAVIS_BUILD_DIR}:/tests_directory -e DISPLAY=:99 qgis-testing-environment
 - sleep 10
-- docker exec -it qgis-testing-environment sh -c "qgis_setup.sh ${PLUGIN_NAME}"
+- docker exec -it qgis-testing-environment sh -c "qgis_setup.sh $PLUGIN_NAME"
 - docker exec -it qgis-testing-environment sh -c "$PIP_EXECUTABLE install paver"
+- PLUGIN_VERSION=`grep version $PLUGIN_NAME/metadata.txt | perl -npe 's/[^\d-]//g'`
 script:
 - docker exec -it qgis-testing-environment sh -c "cd /tests_directory && paver setup && paver package --tests"
 - docker exec -it qgis-testing-environment sh -c "qgis_testrunner.sh ${PLUGIN_NAME}.tests.testerplugin.run_tests"
+notifications:
+  slack:
+    secure: "rFiBz6xEYz5mBnIiNusXogWrEB6pZV0p6plGwqo27rZlkJKepphI7mYpfJU4PF/VUn6YgQOvmm3V6ff1kPAmaYK192PXhaEZFKUZzu0SMj0UrGh/iW0LAFSrXuLMRUMlxSARgxtO9+X5LKgigMOmTpebimvi3hm+GAaHiG5KCN2vAqVmp4qOdvYS/N7o92k2rhC6EpBZ1bhQv5Xx3XK+tMx7UqLwQeThkcpo8IkngEAUSY+ig2ej80Hi41eVWwbCrgQzjmrRH9ECNY2PbVHz/9iM3K0daNas10BeQ+/8jeAVDx4L/MSi5HLnzccrMh1eOMi9Iz7iKlhJ2k4WbO1nT0zJt2IOi5HteosBTrQKT1yWd5D9FXSDx3IOQmmvsDuqf40bC4JZ+42Za/Fn5yPY8Z6msX8NAWbHD3Y398GEMcI04uIaqYxho9dibrb/+20kw/kKQJnZriMjONY+F7C0Kbs1Qee5fH/2gqEoUqkU4YXi/yl6/neASyxGKTJQpTa1czS/Fu+dOrvyO6WdJDC8kfVUq+8MeeJXdhgk2w/C6ifDo53w/9IcmlklPV10kja13mvxqAk+4BrLyZDU0nO4EKZbjHlftNqTAz6d0H77jtlOESPh9FI53v6q7Xhz0sQ2MdYPn4bTy8bBZNcpsG5KxMp++UCs/bPnZG8zSa/U8xU="
+      
+after_success:
+- |
+    if [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_BRANCH}" = "master" ]; then
+        mkdir /home/travis/.ssh/
+        chmod 700 /home/travis/.ssh/
+        openssl aes-256-cbc -K $encrypted_70285cea7e77_key -iv $encrypted_70285cea7e77_iv -in travis_secrets.tar.gz.enc -out travis_secrets.tar.gz -d
+        tar xzvf travis_secrets.tar.gz
+        mv id_rsa.qgisrepoguest /home/travis/.ssh/id_rsa.qgisrepoguest
+        mv ssh_config /home/travis/.ssh/config
+        chmod 600 /home/travis/.ssh/id_rsa.qgisrepoguest
+        chmod 600 /home/travis/.ssh/config
+        export RELEASE_ZIPNAME=${PLUGIN_NAME}.zip
+        echo "Uploading ${RELEASE_ZIPNAME} to QGIS Dev..."
+        scp ${PLUGIN_NAME}.zip qgisrepoguest:${UPLOADS}/${RELEASE_ZIPNAME}
+        export GIT_REV=$(git rev-parse --short HEAD)
+        ssh qgisrepoguest "${UPDATER} update --dev --git-hash ${GIT_REV} ${RELEASE_ZIPNAME}"
+    fi
