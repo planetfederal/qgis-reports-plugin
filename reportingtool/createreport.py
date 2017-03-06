@@ -4,7 +4,26 @@ from __future__ import print_function
 import os
 import datetime
 import site
+import sip
+for c in ('QDate', 'QDateTime', 'QString', 'QTextStream', 'QTime', 'QUrl', 'QVariant'):
+    sip.setapi(c, 2)
+from qgis import utils
+import traceback
 
+
+def _showException(type, value, tb, msg, messagebar=False):
+    print(msg)
+    logmessage = ''
+    for s in traceback.format_exception(type, value, tb):
+        logmessage += s.decode('utf-8', 'replace') if hasattr(s, 'decode') else s
+    print(logmessage)
+
+
+def _open_stack_dialog(type, value, tb, msg, pop_error=True):
+    print(msg)
+
+utils.showException = _showException
+utils.open_stack_dialog = _open_stack_dialog
 
 def mkdir(newdir):
     newdir = newdir.strip('\n\r ')
@@ -41,6 +60,6 @@ def createreport():
     return fullPath, info
 
 if __name__ == "__main__":
-    path = createreport()
+    path, _ = createreport()
     # fix_print_with_import
     print("Report created at " + path)
