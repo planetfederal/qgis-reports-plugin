@@ -30,8 +30,8 @@ script:
 - docker exec -it qgis-testing-environment sh -c "qgis_testrunner.sh ${PLUGIN_NAME}.tests.testerplugin.run_tests"
 notifications:
   slack:
-    secure: "rFiBz6xEYz5mBnIiNusXogWrEB6pZV0p6plGwqo27rZlkJKepphI7mYpfJU4PF/VUn6YgQOvmm3V6ff1kPAmaYK192PXhaEZFKUZzu0SMj0UrGh/iW0LAFSrXuLMRUMlxSARgxtO9+X5LKgigMOmTpebimvi3hm+GAaHiG5KCN2vAqVmp4qOdvYS/N7o92k2rhC6EpBZ1bhQv5Xx3XK+tMx7UqLwQeThkcpo8IkngEAUSY+ig2ej80Hi41eVWwbCrgQzjmrRH9ECNY2PbVHz/9iM3K0daNas10BeQ+/8jeAVDx4L/MSi5HLnzccrMh1eOMi9Iz7iKlhJ2k4WbO1nT0zJt2IOi5HteosBTrQKT1yWd5D9FXSDx3IOQmmvsDuqf40bC4JZ+42Za/Fn5yPY8Z6msX8NAWbHD3Y398GEMcI04uIaqYxho9dibrb/+20kw/kKQJnZriMjONY+F7C0Kbs1Qee5fH/2gqEoUqkU4YXi/yl6/neASyxGKTJQpTa1czS/Fu+dOrvyO6WdJDC8kfVUq+8MeeJXdhgk2w/C6ifDo53w/9IcmlklPV10kja13mvxqAk+4BrLyZDU0nO4EKZbjHlftNqTAz6d0H77jtlOESPh9FI53v6q7Xhz0sQ2MdYPn4bTy8bBZNcpsG5KxMp++UCs/bPnZG8zSa/U8xU="
-      
+    secure: "t93oRnl9nDgdbxT0SPTbpaFY9SWxWNylmgjEvTRmkCL/VYkYNIc/+32bwZjyZuDZcgzDZWIBDxJOq0mmJ6hvI81Yq74D7rzLDCdKQ3JW/Gkvt8MnADboPY3y41XEqdnvLuVk73OtbbjpQrEojXiqQ9GdrhT39BauSXJ+IK3L+X98feHMKjfrYEFw0u6OCza8nFVIlDvzNYgzKRwwlhLxJr/hEukbpDN6J4c3aHJQZUvjfKtEigICSyX16mYlqeh8/gJ2o5B01Y0LFfaNcKSguFCujsGy/K8ZRwG3c0I1P1TaOPaunRVdK/4ZFEkr8DbCI/1NzHMH7yR1A8Wdxf3BiBAZvyDIGQAJOlADZ6E4i76bjUiOpdXfR9YHId0LmFsVT7u8oOzxAWs6sqUviIhUOlQW8XmhIIvkjnV2udxTkLzANOOWkT4TMV5C1vzOG8lWQ2gKmWdcOqJegL6JDup587ANSVGyz1/gdsGMk9M36LsZMf8a3vnKMt5pIxicIe7294AtXbzpqVbA8mTJHonKeo8DFS+7i6ij+uiRSAxKBaApeJw9z1CsIjJ5PWu6wRrU4A0tzt9Z+YGbw4I/pMuD4UM638Ng1sPAGOVb2aa5UgnNsT8lGRbT17sVtnbRb7rdonQiY6I3F8BSX84F+6iJ/20zNFUqhWARK+2g4kIUHMc="
+     
 after_success:
 - |
     if [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_BRANCH}" = "master" ]; then
