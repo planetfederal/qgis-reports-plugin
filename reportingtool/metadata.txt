@@ -1,6 +1,6 @@
 [general]
 name=Reporting tool
-description=
+description=Reporting tool for Boundless Desktop, this plugin collects system informations for support requests.
 about=<p></p>
 category=Plugins
 qgisMinimumVersion=2.0
