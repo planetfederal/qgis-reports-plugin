@@ -2,6 +2,7 @@
 
 from __future__ import print_function
 import os
+import sys
 import datetime
 import site
 import sip
@@ -9,6 +10,8 @@ for c in ('QDate', 'QDateTime', 'QString', 'QTextStream', 'QTime', 'QUrl', 'QVar
     sip.setapi(c, 2)
 from qgis import utils
 import traceback
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'ext-libs'))
 
 
 def _showException(type, value, tb, msg, messagebar=False):
