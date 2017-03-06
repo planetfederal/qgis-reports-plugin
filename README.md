@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/boundlessgeo/qgis-reports-plugin.svg?branch=master)](https://travis-ci.org/boundlessgeo/qgis-reports-plugin)
+
 #QGIS Reporting tool
 
 A plugin to collect information from your QGIS installation and your system, to help in debugging.
