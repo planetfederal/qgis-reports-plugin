@@ -6,15 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>554</width>
+    <width>623</width>
     <height>463</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Boundless Desktop Diagnostics Report</string>
+   <string>Troubleshooting Information</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>20</number>
+   </property>
+   <property name="topMargin">
+    <number>20</number>
+   </property>
+   <property name="rightMargin">
+    <number>20</number>
+   </property>
+   <property name="bottomMargin">
     <number>20</number>
    </property>
    <item>
