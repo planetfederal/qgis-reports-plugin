@@ -62,15 +62,7 @@ class ReportingTool(object):
         self.action.triggered.connect(self.run)
         self.iface.addPluginToMenu("Reporting tool", self.action)
 
-        helpIcon = QgsApplication.getThemeIcon('/mActionHelpAPI.png')
-        self.helpAction = QAction(helpIcon, "Reporting tool Help", self.iface.mainWindow())
-        self.helpAction.setObjectName("reportingtoolHelp")
-        self.helpAction.triggered.connect(lambda: webbrowser.open_new(
-                        "file://" + os.path.join(os.path.dirname(__file__), "docs", "html", "index.html")))
-        self.iface.addPluginToMenu("Reporting tool", self.helpAction)
-
     def unload(self):
-        self.iface.removePluginMenu("Reporting tool", self.helpAction)
         self.iface.removePluginMenu("Reporting tool", self.action)
         try:
             from reportingtool.tests import testerplugin
