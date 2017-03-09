@@ -57,13 +57,13 @@ class ReportingTool(object):
 
     def initGui(self):
         icon = QIcon(os.path.dirname(__file__) + "reportingtool.png")
-        self.action = QAction(icon, "Reporting tool", self.iface.mainWindow())
+        self.action = QAction(icon, "Troubleshooting Information", self.iface.mainWindow())
         self.action.setObjectName("startreportingtool")
         self.action.triggered.connect(self.run)
-        self.iface.addPluginToMenu("Reporting tool", self.action)
+        self.iface.addPluginToMenu("Troubleshooting Information", self.action)
 
     def unload(self):
-        self.iface.removePluginMenu("Reporting tool", self.action)
+        self.iface.removePluginMenu("Troubleshooting Information", self.action)
         try:
             from reportingtool.tests import testerplugin
             from qgistester.tests import removeTestModule
