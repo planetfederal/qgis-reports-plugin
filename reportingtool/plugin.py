@@ -60,10 +60,21 @@ class ReportingTool(object):
         self.action = QAction(icon, "Troubleshooting Information", self.iface.mainWindow())
         self.action.setObjectName("startreportingtool")
         self.action.triggered.connect(self.run)
-        self.iface.addPluginToMenu("Troubleshooting Information", self.action)
+
+        self.separator = QAction(self.iface.mainWindow())
+        self.separator.setObjectName("reportingtoolseparator")
+        self.separator.setSeparator(True)
+
+        helpMenu = self.iface.helpMenu()
+        for action in helpMenu.actions():
+            if action.objectName() == "mActionNeedSupport":
+                helpMenu.insertActions(action, [self.action, self.separator])
 
     def unload(self):
-        self.iface.removePluginMenu("Troubleshooting Information", self.action)
+        helpMenu = self.iface.helpMenu()
+        helpMenu.removeAction(self.action)
+        helpMenu.removeAction(self.separator)
+
         try:
             from reportingtool.tests import testerplugin
             from qgistester.tests import removeTestModule
