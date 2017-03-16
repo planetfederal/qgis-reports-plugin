@@ -8,14 +8,14 @@ Usage
 
 Using the |current_plugin|, you can create a report in two ways:
 
-* From inside QGIS interface.
-* From outside QGIS using the command line
+* Using QGIS's interface.
+* Using the command shell.
 
-From inside QGIS
-----------------
+Using QGIS's interface
+----------------------
 
-To use the |current_plugin|, go to :menuselection:`Help --> Troubleshooting
-Information`.
+In QGIS, to use the |current_plugin|, click the :menuselection:`Help -->
+Troubleshooting Information` menu time.
 
 .. figure:: img/open_report_tool.png
 
@@ -31,12 +31,12 @@ default text editor by clicking the provided link.
 You can also copy the full report by clicking :guilabel:`Copy to clipboard`
 button.
 
-From the command shell
-----------------------
+Using the command shell
+-----------------------
 
 The |current_plugin| plugin for QGIS uses a Python library to collect the needed
 information for the report. This library can be called from outside of QGIS,
-so you can collect the same information even if your QGIS installation is
+so you can obtain the same information even if your QGIS installation is
 broken and QGIS itself cannot be started.
 
 To run the report tool library, do the following:
@@ -63,5 +63,3 @@ To run the report tool library, do the following:
 That will create a new report in the reports folder
 (``[your_user_folder]/.qgis2/reports``), just like the plugin does when used
 from inside QGIS.
-
-Send report
