@@ -15,7 +15,7 @@ Using QGIS's interface
 ----------------------
 
 In QGIS, to use the |current_plugin|, click the :menuselection:`Help -->
-Troubleshooting Information` menu time.
+Troubleshooting Information` menu itme.
 
 .. figure:: img/open_report_tool.png
 
@@ -28,7 +28,7 @@ The report is saved automatically in your file system, in the
 ``[your_user_folder]/.qgis2/reports`` folder. You can open it with the
 default text editor by clicking the provided link.
 
-You can also copy the full report by clicking :guilabel:`Copy to clipboard`
+You can also copy the full report by clicking the :guilabel:`Copy to clipboard`
 button.
 
 Using the command shell
