@@ -35,7 +35,6 @@ from qgis.core import QgsApplication
 import qgissysinfo.systeminfo
 import webbrowser
 
-from reportingtool import createreport
 from reportingtool.reportdialog import ReportDialog
 
 class ReportingTool(object):
@@ -83,6 +82,7 @@ class ReportingTool(object):
             pass
 
     def run(self):
+        from reportingtool import createreport
         fullPath, info = createreport.createreport()
 
         dlg = ReportDialog(info, fullPath)
