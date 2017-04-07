@@ -47,13 +47,6 @@ class ReportingTool(object):
         except:
             pass
 
-        try:
-            from lessons import addLessonsFolder
-            folder = os.path.join(os.path.dirname(__file__), "_lessons")
-            addLessonsFolder(folder)
-        except:
-            pass
-
     def initGui(self):
         icon = QIcon(os.path.dirname(__file__) + "reportingtool.png")
         self.action = QAction(icon, "Troubleshooting Information", self.iface.mainWindow())
@@ -68,6 +61,13 @@ class ReportingTool(object):
         for action in helpMenu.actions():
             if action.objectName() == "mActionNeedSupport":
                 helpMenu.insertActions(action, [self.action, self.separator])
+
+        try:
+            from lessons import addLessonsFolder
+            folder = os.path.join(os.path.dirname(__file__), "_lessons")
+            addLessonsFolder(folder)
+        except:
+            pass
 
     def unload(self):
         helpMenu = self.iface.helpMenu()
