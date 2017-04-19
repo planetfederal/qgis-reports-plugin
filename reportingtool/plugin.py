@@ -15,7 +15,6 @@
 *                                                                         *
 ***************************************************************************
 """
-from __future__ import absolute_import
 from builtins import object
 
 __author__ = 'Boundless'
@@ -26,16 +25,17 @@ __copyright__ = '(C) 2016 Boundless, http://boundlessgeo.com'
 
 import os
 import datetime
+import webbrowser
 
 from qgis.PyQt.QtCore import QDir
 from qgis.PyQt.QtGui import QIcon, QAction
 
 from qgis.core import QgsApplication
 
-import qgissysinfo.systeminfo
-import webbrowser
+from qgissysinfo.createreport import createReport
 
 from reportingtool.reportdialog import ReportDialog
+
 
 class ReportingTool(object):
     def __init__(self, iface):
@@ -82,8 +82,7 @@ class ReportingTool(object):
             pass
 
     def run(self):
-        from reportingtool import createreport
-        fullPath, info = createreport.createreport()
+        report, filePath = createReport()
 
-        dlg = ReportDialog(info, fullPath)
+        dlg = ReportDialog(report, filePath)
         dlg.exec_()
