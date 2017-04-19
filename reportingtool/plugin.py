@@ -24,8 +24,12 @@ __copyright__ = '(C) 2016 Boundless, http://boundlessgeo.com'
 # This will get replaced with a git SHA1 when you do a git archive
 
 import os
+import sys
+import glob
 import datetime
 import webbrowser
+import time
+from stat import S_ISREG, ST_CTIME, ST_MODE
 
 from qgis.PyQt.QtCore import QDir
 from qgis.PyQt.QtGui import QIcon, QAction
@@ -35,6 +39,8 @@ from qgis.core import QgsApplication
 from qgissysinfo.createreport import createReport
 
 from reportingtool.reportdialog import ReportDialog
+
+pluginPath = os.path.dirname(__file__)
 
 
 class ReportingTool(object):
@@ -82,7 +88,32 @@ class ReportingTool(object):
             pass
 
     def run(self):
-        report, filePath = createReport()
+        if sys.platform == "darwin":
+            os.system("python {}".format(os.path.join(pluginPath, "ext-libs", "qgissysinfo", "createreport.py")))
+            filePath = self.lastReport()
+            with open(filePath) as f:
+                report = f.read()
+            #~ proc = subprocess.Popen(
+                #~ fused_command,
+                #~ shell=True,
+                #~ stdout=subprocess.PIPE,
+                #~ stdin=open(os.devnull),
+                #~ stderr=subprocess.STDOUT,
+                #~ universal_newlines=True,
+            #~ ).stdout
+            #~ for line in proc:
+                #~ pass
+        else:
+            report, filePath = createReport()
 
         dlg = ReportDialog(report, filePath)
         dlg.exec_()
+
+    def lastReport(self):
+        reportsPath = os.path.expanduser("~")
+        reports = (fn for fn in glob.glob(os.path.join(reportsPath, "QgisSystemReport*")))
+        reports = ((os.stat(f), f) for f in reports)
+        reports = ((stat[ST_CTIME], f) for stat, f in reports if S_ISREG(stat[ST_MODE]))
+        reports = sorted(reports)
+
+        return reports[-1][1]
