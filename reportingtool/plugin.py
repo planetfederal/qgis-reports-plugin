@@ -93,16 +93,6 @@ class ReportingTool(object):
             filePath = self.lastReport()
             with open(filePath) as f:
                 report = f.read()
-            #~ proc = subprocess.Popen(
-                #~ fused_command,
-                #~ shell=True,
-                #~ stdout=subprocess.PIPE,
-                #~ stdin=open(os.devnull),
-                #~ stderr=subprocess.STDOUT,
-                #~ universal_newlines=True,
-            #~ ).stdout
-            #~ for line in proc:
-                #~ pass
         else:
             report, filePath = createReport()
 
