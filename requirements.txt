@@ -1,3 +1,4 @@
+git+https://github.com/workhorsy/py-cpuinfo.git
 future
 git+https://github.com/boundlessgeo/qgissysinfo.git
 
