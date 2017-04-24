@@ -63,6 +63,14 @@ class ReportingTool(object):
         self.separator.setObjectName("reportingtoolseparator")
         self.separator.setSeparator(True)
 
+        actions = self.iface.mainWindow().menuBar().actions()
+        for action in actions:
+            if action.menu().objectName() == 'mPluginMenu':
+                menuPlugin = action.menu()
+                for a in menuPlugin.actions():
+                    if a.isSeparator():
+                        menuPlugin.insertAction(a, self.action)
+
         helpMenu = self.iface.helpMenu()
         for action in helpMenu.actions():
             if action.objectName() == "mActionNeedSupport":
@@ -79,6 +87,12 @@ class ReportingTool(object):
         helpMenu = self.iface.helpMenu()
         helpMenu.removeAction(self.action)
         helpMenu.removeAction(self.separator)
+
+        actions = self.iface.mainWindow().menuBar().actions()
+        for action in actions:
+            if action.menu().objectName() == 'mPluginMenu':
+                menuPlugin = action.menu()
+                menuPlugin.removeAction(self.action)
 
         try:
             from reportingtool.tests import testerplugin
