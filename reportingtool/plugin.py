@@ -102,13 +102,10 @@ class ReportingTool(object):
             pass
 
     def run(self):
-        if sys.platform == "darwin":
-            os.system("python {}".format(os.path.join(pluginPath, "ext-libs", "qgissysinfo", "createreport.py")))
-            filePath = self.lastReport()
-            with open(filePath) as f:
-                report = f.read()
-        else:
-            report, filePath = createReport()
+        os.system("python {}".format(os.path.join(pluginPath, "ext-libs", "qgissysinfo", "createreport.py")))
+        filePath = self.lastReport()
+        with open(filePath) as f:
+            report = f.read()
 
         dlg = ReportDialog(report, filePath)
         dlg.exec_()
