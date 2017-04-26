@@ -1,5 +1,4 @@
-git+https://github.com/workhorsy/py-cpuinfo.git
 future
-git+https://github.com/boundlessgeo/qgissysinfo.git
+git+https://github.com/boundlessgeo/qgissysinfo.git@no-py-cpuinfo
 
 # test requirements
