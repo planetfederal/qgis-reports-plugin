@@ -58,7 +58,7 @@ def setup(options):
         error('FATAL: Unable to import pip, please install it first!')
         sys.exit(1)
 
-    os.environ['PYTHONPATH']=ext_libs.abspath()
+    os.environ['PYTHONPATH']=str(ext_libs.abspath())
     for req in runtime + test:
         if '#egg' in req:
             urlspec, req = req.split('#egg=')
