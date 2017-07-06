@@ -49,7 +49,7 @@ class ReportingTool(object):
         try:
             from reportingtool.tests import testerplugin
             from qgistester.tests import addTestModule
-            addTestModule(testerplugin, "Reporting tool")
+            addTestModule(testerplugin, "Support tool")
         except:
             pass
 
@@ -97,7 +97,7 @@ class ReportingTool(object):
         try:
             from reportingtool.tests import testerplugin
             from qgistester.tests import removeTestModule
-            removeTestModule(testerplugin, "Reporting tool")
+            removeTestModule(testerplugin, "Support tool")
         except:
             pass
 
