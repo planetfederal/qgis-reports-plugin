@@ -1,6 +1,6 @@
 [general]
 name=Support tool
-description=Reporting tool for Boundless Desktop, this plugin collects system information for support requests.
+description=Support tool for Boundless Desktop, this plugin collects system information for support requests.
 about=<p></p>
 category=Plugins
 qgisMinimumVersion=2.0
