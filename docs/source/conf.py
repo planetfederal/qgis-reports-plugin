@@ -43,7 +43,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Reporting tool'
+project = u'Support tool'
 copyright = u'2016, Boundless Spatial'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -196,7 +196,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'reporting_tool.tex', u'Reporting tool Documentation',
+  ('index', 'reporting_tool.tex', u'Support tool Documentation',
    u'Boundless', 'manual'),
 ]
 
@@ -223,7 +223,7 @@ latex_documents = [
 # Substitutions
 rst_epilog = """
 .. |BLQGIS| replace:: *Bouldless Desktop*
-.. |current_plugin| replace:: *Reporting tool*
+.. |current_plugin| replace:: *Support tool*
 """
 
 
@@ -232,7 +232,7 @@ rst_epilog = """
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', '[pluginshortname]', u'Reporting tool Documentation',
+    ('index', '[pluginshortname]', u'Support tool Documentation',
      [u'Boundless'], 1)
 ]
 
@@ -246,8 +246,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', '[pluginshortname]', u'Reporting tool plugin Documentation',
-   u'Boundless', u'ReportToolQGISPlugin', 'One line description of project.',
+  ('index', '[pluginshortname]', u'Support tool plugin Documentation',
+   u'Boundless', u'SupportToolQGISPlugin', 'One line description of project.',
    'Miscellaneous'),
 ]
 
