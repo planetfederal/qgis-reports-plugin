@@ -1,5 +1,5 @@
 [general]
-name=Reporting tool
+name=Support tool
 description=Reporting tool for Boundless Desktop, this plugin collects system information for support requests.
 about=<p></p>
 category=Plugins
