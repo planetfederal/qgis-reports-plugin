@@ -8,8 +8,10 @@ Usage
 
 Using the |current_plugin|, you can create a report in two ways:
 
-* Using QGIS's interface.
-* Using the command shell.
+* :ref:`using_qgis_interface`.
+* :ref:`using_command_line`.
+
+.. _using_qgis_interface:
 
 Using QGIS's interface
 ----------------------
@@ -31,6 +33,8 @@ default text editor by clicking the provided link.
 You can also copy the full report by clicking the :guilabel:`Copy to clipboard`
 button.
 
+.. _using_command_line:
+
 Using the command shell
 -----------------------
 
@@ -46,7 +50,7 @@ To run the report tool library, do the following:
    .. figure:: img/open_commnad_shell.png
 
 #. Move to the folder where you have the installed the plugin (usually
-   [your_user_folder]/.qgis2/python/plugin/reportingtool).. figure:: img/
+   [your_user_folder]/.qgis2/python/plugin/reportingtool).
 
    On Windows, type::
 
