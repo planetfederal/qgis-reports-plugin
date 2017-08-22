@@ -3,7 +3,7 @@
 # the main sections and second level sections
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-REPORT_SCRIPT_CMD="${PYTHON_EXECUTABLE} ${SCRIPT_DIR}/../ext-libs/qgissysinfo/createreport.py"
+REPORT_SCRIPT_CMD="${PYTHON_EXECUTABLE} ${SCRIPT_DIR}/../extlibs/qgissysinfo/createreport.py"
 REPORT_PATH=$(${REPORT_SCRIPT_CMD}|sed -e 's/Report saved to //')
 echo $REPORT_PATH
 REPORT_TEXT=$(cat $REPORT_PATH| sed -e 's/\t/@@/g')

@@ -18,7 +18,7 @@ To do so, do the following:
 
 - open a console. It has to be a console that uses the same Python as QGIS, not the system one. For instance, if you installed QGIS in Windows using OSGeo4W, use the OSGeo4W shell.
 
-- move to the folder where you have installed the plugin (usually `[your_user_folder]/.qgis2/python/plugins/reportingtool/ext-libs/qgissysinfo`) and run
+- move to the folder where you have installed the plugin (usually `[your_user_folder]/.qgis2/python/plugins/reportingtool/extlibs/qgissysinfo`) and run
 
 ```
 $ python createreport.py
