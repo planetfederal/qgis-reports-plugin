@@ -11,7 +11,9 @@ saved as a file or copied to the clipboard.
 Documentation contents:
 
 .. toctree::
+   :glob:
    :maxdepth: 2
 
    installation
    usage
+   *
