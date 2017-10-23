@@ -91,3 +91,4 @@ ENV/
 # External libs
 reportingtool/ext-libs/
 reportingtool.zip
+reportingtool/extlibs/
