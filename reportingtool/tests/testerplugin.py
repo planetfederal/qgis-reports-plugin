@@ -8,15 +8,13 @@ from qgissysinfo.tests import QgisSysInfoTests
 
 try:
     from qgistester.test import Test
-    from qgistester.utils import layerFromName
 except:
     pass
 
 
 def functionalTests():
     try:
-        from qgistester.test import Test
-        from qgistester.utils import layerFromName
+        from qgistester.test import Tests
     except:
         return []
 

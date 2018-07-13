@@ -3,7 +3,7 @@ name=Support tool
 description=Support tool for Boundless Desktop, this plugin collects system information for support requests.
 about=<p></p>
 category=Plugins
-qgisMinimumVersion=2.0
+qgisMinimumVersion=3.0
 version=1.0
 
 author=Boundless
