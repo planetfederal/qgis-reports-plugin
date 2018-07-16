@@ -37,47 +37,67 @@ options(
 )
 
 
+@task
+def install(options):
+    '''install plugin to qgis'''
+    builddocs(options)
+    plugin_name = options.plugin.name
+    src = path(__file__).dirname() / plugin_name
+    if os.name == 'nt':
+        dst = path('~/AppData/Roaming/QGIS/QGIS3/profiles/default/python/plugins').expanduser() / plugin_name
+    else:
+        dst = path('~/.local/share/QGIS/QGIS3/profiles/default/python/plugins').expanduser() / plugin_name
+    src = src.abspath()
+    dst = dst.abspath()
+    if os.name == 'nt':
+        dst.rmtree()
+        src.copytree(dst)
+    elif not dst.exists():
+        src.symlink(dst)
+        # Symlink the build folder to the parent
+        docs = path('..') / '..' / "docs" / 'build' / 'html'
+        docs_dest = path(__file__).dirname() / plugin_name / "docs"
+        docs_link = docs_dest / 'html'
+        if not docs_dest.exists():
+            docs_dest.mkdir()
+        if not docs_link.islink():
+            docs.symlink(docs_link)
 
 @task
 @cmdopts([
-    ('clean', 'c', 'clean out dependencies first'),
+    ('clean', 'c', 'Clean out dependencies first'),
+    ('develop', 'd', 'Do not alter source dependency git checkouts'),
 ])
 def setup(options):
-    '''install dependencies'''
+    """Install run-time dependencies"""
     clean = getattr(options, 'clean', False)
+    develop = getattr(options, 'develop', False)
     ext_libs = options.plugin.ext_libs
     ext_src = options.plugin.ext_src
     if clean:
         ext_libs.rmtree()
     ext_libs.makedirs()
     runtime, test = read_requirements()
-
-    try:
-        import pip
-    except:
-        error('FATAL: Unable to import pip, please install it first!')
-        sys.exit(1)
-
-    os.environ['PYTHONPATH']=str(ext_libs.abspath())
+    os.environ['PYTHONPATH']=ext_libs.abspath()
     for req in runtime + test:
         if '#egg' in req:
             urlspec, req = req.split('#egg=')
             localpath = ext_src / req
-            if localpath.exists():
-                cwd = os.getcwd()
-                os.chdir(localpath)
-                print(localpath)
-                sh('git pull')
-                os.chdir(cwd)
-            else:
-                sh('git clone  %s %s' % (urlspec, localpath))
+            if not develop:
+                if localpath.exists():
+                    cwd = os.getcwd()
+                    os.chdir(localpath)
+                    sh('git pull')
+                    os.chdir(cwd)
+                else:
+                    sh('git clone  %s %s' % (urlspec, localpath))
             req = localpath
 
-        pip.main(['install',
-                  '-t',
-                  ext_libs.abspath(),
-                  req])
-
+        else:
+            sh('easy_install -a -d %(ext_libs)s %(dep)s' % {
+            'ext_libs' : ext_libs.abspath(),
+            'dep' : req
+            })
 
 def read_requirements():
     '''return a list of runtime and list of test requirements'''
@@ -90,31 +110,6 @@ def read_requirements():
         raise BuildFailure('expected to find "%s" in requirements.txt' % divider)
     not_comments = lambda s,e: [ l for l in lines[s:e] if l[0] != '#']
     return not_comments(0, idx), not_comments(idx+1, None)
-
-def _install(folder):
-    '''install plugin to qgis'''
-    plugin_name = options.plugin.name
-    src = path(__file__).dirname() / plugin_name
-    dst = path('~').expanduser() / folder / 'python' / 'plugins' / plugin_name
-    src = src.abspath()
-    dst = dst.abspath()
-    if not hasattr(os, 'symlink'):
-        dst.rmtree()
-        src.copytree(dst)
-    elif not dst.exists():
-        src.symlink(dst)
-
-@task
-def install(options):
-    _install(".qgis2")
-
-@task
-def installdev(options):
-    _install(".qgis-dev")
-
-@task
-def install3(options):
-    _install(".qgis3")
 
 @task
 @cmdopts([
