@@ -27,7 +27,7 @@ import sys
 import subprocess
 
 from qgis.PyQt import uic
-from qgis.PyQt.QtGui import QApplication, QSizePolicy
+from qgis.PyQt.QtWidgets import QApplication, QSizePolicy
 from qgis.gui import QgsMessageBar
 
 WIDGET, BASE = uic.loadUiType(

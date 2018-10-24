@@ -32,7 +32,8 @@ import time
 from stat import S_ISREG, ST_CTIME, ST_MODE
 
 from qgis.PyQt.QtCore import QDir
-from qgis.PyQt.QtGui import QIcon, QAction
+from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtWidgets import QAction
 
 from qgis.core import QgsApplication
 
