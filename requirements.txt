@@ -1,4 +1,3 @@
-future
-git+https://github.com/boundlessgeo/qgissysinfo.git@no-py-cpuinfo
+git+https://github.com/boundlessgeo/qgissysinfo.git
 
 # test requirements

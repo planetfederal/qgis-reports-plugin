@@ -7,6 +7,7 @@ from builtins import range
 #
 
 import os
+import sys
 import fnmatch
 import zipfile
 import shutil
@@ -40,16 +41,15 @@ options(
 @task
 def install(options):
     '''install plugin to qgis'''
-    builddocs(options)
     plugin_name = options.plugin.name
     src = path(__file__).dirname() / plugin_name
-    if os.name == 'nt':
-        dst = path('~/AppData/Roaming/QGIS/QGIS3/profiles/default/python/plugins').expanduser() / plugin_name
+    if sys.platform == 'darwin':
+        dst = path('~').expanduser() / "Library/Application Support/QGIS/QGIS3/profiles/default/python/plugins" / plugin_name
     else:
-        dst = path('~/.local/share/QGIS/QGIS3/profiles/default/python/plugins').expanduser() / plugin_name
+        dst = path('~').expanduser() / "AppData/Roaming/QGIS/QGIS3/QGIS/QGIS3/profiles/default/python/plugins" / plugin_name
     src = src.abspath()
     dst = dst.abspath()
-    if os.name == 'nt':
+    if not hasattr(os, 'symlink'):
         dst.rmtree()
         src.copytree(dst)
     elif not dst.exists():
