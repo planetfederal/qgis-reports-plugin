@@ -1,12 +1,12 @@
 .. (c) 2016 Boundless, http://boundlessgeo.com
    This code is licensed under the GPL 2.0 license.
 
-.. _usage:
+.. _support_usage:
 
 Usage
 =====
 
-Using the |current_plugin|, you can create a report in two ways:
+Using the *Support Tool*, you can create a report in two ways:
 
 * :ref:`using_qgis_interface`.
 * :ref:`using_command_line`.
@@ -16,7 +16,7 @@ Using the |current_plugin|, you can create a report in two ways:
 Using QGIS's interface
 ----------------------
 
-In QGIS, to use the |current_plugin|, click the :menuselection:`Help -->
+In QGIS, to use the *Support Tool*, click the :menuselection:`Help -->
 Troubleshooting Information` menu itme.
 
 .. figure:: img/open_report_tool.png
@@ -38,7 +38,7 @@ button.
 Using the command shell
 -----------------------
 
-The |current_plugin| plugin for QGIS uses a Python library to collect the needed
+The *Support Tool* uses a Python library to collect the needed
 information for the report. This library can be called from outside of QGIS,
 so you can obtain the same information even if your QGIS installation is
 broken and QGIS itself cannot be started.

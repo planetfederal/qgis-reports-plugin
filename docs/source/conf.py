@@ -223,7 +223,6 @@ latex_documents = [
 # Substitutions
 rst_epilog = """
 .. |BLQGIS| replace:: *Bouldless Desktop*
-.. |current_plugin| replace:: *Support tool*
 """
 
 
