@@ -10,15 +10,15 @@ env:
   - secure: "ANyaylherbXBIdMcBgX94JT0RfoSxaQmFlGj8Zp+t/wxX3NSGqg3dr8ARkw6Jt4kxk3FQPG6gSXTl0j3gmzNP/+kl4AXuyJz2Z7TSu0s4aFeQiRR4r4wAAVZ89GbPsNEmoPhTAZTFpPiuk1Lu59HJ6Lu767jAlTKZ6/siF0LtXpNyc1IK+oQcepT8cXrivmFakkNAJ5uQKyMFbG4gMfyGq4CKauCg1/2l61ysemixm7xkrzAS78gzePns5FYNk0KgC91ZusMgRrvbk+9qr8pJpPeW3NkRUzVOtcp5mmKWQixuQJ19K/fiLTV8XwmiRlQZLLkINhb0rYiVJBpoHJRyqFD7oh56CW9vPp5oOrzFptLGIM8n/N+VhG71LJNW3KzxaY00ToPruYseCokuxdyLUioQwXok2bw26ZyeeCyfXvT2/cE7q/ApP+lexkOnz5tDL53/n9vgyfd9RjXj+56zNs6W2kTJwQ+cZbrCvF8jHCt3uHLHR/Fh4SCPRDp4CRLsMZVhZG3X90GV047ssEMNIH0T8nI+aqXnYShL9MWS+IvU47bfJqgPRXayRcm+1iwkporlD4eTrmACBvqEnYdp99MhJ1G2VC6JC8RCrHWaUqtYV/YqN2Qebvz2qND64FwNTaHgPcXRl9Q0MgMT5mtXF5MZoSzMJ9DGVRiZ14xQnc="
   - secure: "JDYdAwYvR9g2f8BYbQ8CvqDAQGQ/7ZYb6Yek/UEzenAcRXlSsGc+DF7t0OuuSM36LoGJkw3G3wfRwS44GEFnk3h6sLPVgy7dtmIXROITEYtZVJb4NGuYn/bKKTt36ksI578KcBMwhsLajKfvFkbjsjbkb6tClm0FqEMO/z9HprDJrQkuqYir77aj5Wk/8TuagtM1TPX5YAJUi0+njg4+oG5GAJGUVn8L2McRetxzCEcdk3/zCnUzh4BQH7CQAb6YilPdiitDfSFQES4frHzIfhyieiuZ0PhxqVx/Vo5Pbz8uOKE3ctiPrainKb7PQ8/6vvWxs8EaOMMHpyv0f4USzpFhnaUrf8XfV96wjJPEnK87foHD8I1lc3M0Wtt8Xah0wm+nr7kvMXuzXBc8Vdo337mZ4BkGK/MstrI5s65ggvIsEYzhMgok9Em+6G5ct90713ZwU8xMhJfnJ9cSnrjHa/wUXa5bg3OhdV6RM7UgIvig/g3ejUChzBa9Z8qDqWljmF6v6zeJ+sFA9Jd4cNidgCO/tPGBRbIIYoLoysyT1S3qJSQFxCV+nxsniqtP2H3h7u57BbXVypuZn0yQI3V97a8TBDrUnk01HasdO9T21z2zcWgLosoxPd+xY49T1tJypf+YyKTzXiNIXKChWe8qhVyslUxlofnWxZDWarafW+8="
   matrix:
-  - QGIS_VERSION_TAG=release PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
-  - QGIS_VERSION_TAG=master_2 PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
+  # - QGIS_VERSION_TAG=release PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
+  # - QGIS_VERSION_TAG=master_2 PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
   - QGIS_VERSION_TAG=master PYTHON_EXECUTABLE=python3 PIP_EXECUTABLE=pip3
 matrix:
   allow_failures:
   - env: QGIS_VERSION_TAG=master PYTHON_EXECUTABLE=python3 PIP_EXECUTABLE=pip3
 before_install:
-- docker pull boundlessgeo/qgis-testing-environment:${QGIS_VERSION_TAG}
-- docker tag boundlessgeo/qgis-testing-environment:${QGIS_VERSION_TAG} qgis-testing-environment
+- docker pull elpaso/qgis-testing-environment:${QGIS_VERSION_TAG}
+- docker tag elpaso/qgis-testing-environment:${QGIS_VERSION_TAG} qgis-testing-environment
 install:
 - docker run -d --name qgis-testing-environment -v ${TRAVIS_BUILD_DIR}:/tests_directory -e DISPLAY=:99 qgis-testing-environment
 - sleep 10
@@ -47,5 +47,5 @@ after_success:
         echo "Uploading ${RELEASE_ZIPNAME} to QGIS Dev..."
         scp ${PLUGIN_NAME}.zip qgisrepoguest:${UPLOADS}/${RELEASE_ZIPNAME}
         export GIT_REV=$(git rev-parse --short HEAD)
-        ssh qgisrepoguest "${UPDATER} update --dev --git-hash ${GIT_REV} ${RELEASE_ZIPNAME}"
+        ssh qgisrepoguest "${UPDATER} update --remove-version all --role desktop-qgis-plugin-dev --git-hash ${GIT_REV} qgis-dev ${RELEASE_ZIPNAME}"
     fi
