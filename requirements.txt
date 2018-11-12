@@ -1,3 +1,3 @@
-git+https://github.com/boundlessgeo/qgissysinfo.git
+git+https://github.com/elpaso/qgissysinfo.git@patch-1
 
 # test requirements
