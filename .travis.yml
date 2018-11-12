@@ -26,9 +26,7 @@ install:
 - docker exec -it qgis-testing-environment sh -c "$PIP_EXECUTABLE install paver"
 - PLUGIN_VERSION=`grep version $PLUGIN_NAME/metadata.txt | perl -npe 's/[^\d-]//g'`
 script:
-- docker exec -it qgis-testing-environment sh -c "cd /tests_directory && paver setup && paver package --tests"
-- docker exec -it qgis-testing-environment sh -c "qgis_testrunner.sh ${PLUGIN_NAME}.tests.testerplugin.run_tests"
-- docker exec -it qgis-testing-environment sh -c "PYTHON_EXECUTABLE=$PYTHON_EXECUTABLE /tests_directory/${PLUGIN_NAME}/tests/commandline_test.sh"
+- docker exec -it qgis-testing-environment sh -c "cd /tests_directory && paver setup && paver package --tests && qgis_testrunner.sh ${PLUGIN_NAME}.tests.testerplugin.run_tests && PYTHON_EXECUTABLE=$PYTHON_EXECUTABLE /tests_directory/${PLUGIN_NAME}/tests/commandline_test.sh"
 notifications:
   slack:
     secure: "jZJVPzb7dHrSpsldsSfR3WmF3ChmgMfq1rf8L58WRhx2r0+Jf1JvlKNZgPihd43Pp3lHiAtp1KE+iMQ7aD9KI3yj6RXJrCXQR+ANJ5pzdXA136vmCOl1m3bl+zlo7QEgWosczbNXu0yE/C+Iy/Y1gGI8SvYxvSQeS4Bz7rL5krNndb6G8NzVqiQ7UPrPr8usMMorguIYw62lRuGSHgImteEfKhGQIrYt9xHHvI3Eo5flEDdTr5PsCYoJA77hx6hhZGJqHdduzcOnECdCR+hvfw/1pyEqjgfxfXvHy7diC0xv++hY8ef9bSEsCH2Qb0um7g2sdz1LFZEdNGp1ldfWSQvCkXBim4HcBvkHqBd8C4hBHpMjscCI8RIJUfZeK0t283w/XetdZnjd1zJNriP2pdo2Ys+ROLqAlmvaX9jE6fhEOoFEyqougEWOIOD/kClDEpusu4SaYJqWCdX8uzZQe3hCXc9J7KlYclbr18PxAjPgEj8V1AXj7MdtzjfUgdju1oTJY0m/3ZJV21fr+IIMA6X7hItOk59oBTSAxwrNi847FQIDVsmVoaXeOo81qJ7ttAGclYtI8qNJctQCStYPRty7M3KLWUvvukBsWu+TTQIKgP+FL1ZxNmcvJo9apvliXIlErKsyjxSX3dYp90sICBtEJ51Wp+rDeaaJwpSgxDU="
