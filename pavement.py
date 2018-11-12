@@ -94,9 +94,9 @@ def setup(options):
             req = localpath
 
         else:
-            sh('easy_install -a -d %(ext_libs)s %(dep)s' % {
-            'ext_libs' : ext_libs.abspath(),
-            'dep' : req
+            sh('pip3 install -U -t %(ext_libs)s %(dep)s' % {
+                'ext_libs' : ext_libs.abspath(),
+                'dep' : req
             })
 
 def read_requirements():
