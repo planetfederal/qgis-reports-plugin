@@ -45,6 +45,8 @@ def install(options):
     src = path(__file__).dirname() / plugin_name
     if sys.platform == 'darwin':
         dst = path('~').expanduser() / "Library/Application Support/QGIS/QGIS3/profiles/default/python/plugins" / plugin_name
+    elif sys.platform == 'linux':
+        dst = path('~').expanduser() / ".local/share/QGIS/QGIS3/profiles/default/python/plugins" / plugin_name
     else:
         dst = path('~').expanduser() / "AppData/Roaming/QGIS/QGIS3/QGIS/QGIS3/profiles/default/python/plugins" / plugin_name
     src = src.abspath()
