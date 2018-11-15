@@ -48,7 +48,7 @@ def install(options):
     elif sys.platform == 'linux':
         dst = path('~').expanduser() / ".local/share/QGIS/QGIS3/profiles/default/python/plugins" / plugin_name
     else:
-        dst = path('~').expanduser() / "AppData/Roaming/QGIS/QGIS3/QGIS/QGIS3/profiles/default/python/plugins" / plugin_name
+        dst = path('~').expanduser() / "AppData/Roaming/QGIS/QGIS3/profiles/default/python/plugins" / plugin_name
     src = src.abspath()
     dst = dst.abspath()
     if not hasattr(os, 'symlink'):
