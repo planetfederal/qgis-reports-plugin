@@ -8,8 +8,8 @@ Usage
 
 Using the *Support Tool*, you can create a report in two ways:
 
-* :ref:`using_qgis_interface`.
-* :ref:`using_command_line`.
+* :ref:`using_qgis_interface`
+* :ref:`using_command_line`
 
 .. _using_qgis_interface:
 
@@ -22,7 +22,7 @@ Boundless support tool` menu item.
 .. figure:: img/open_report_tool.png
 
 After a few seconds, the :guilabel:`Troubleshooting Information` dialog
-opens, already displaying all information that was collected.
+opens, already displaying all the collected information.
 
 .. figure:: img/diagnostics_dialog.png
 
@@ -48,7 +48,7 @@ To run the report tool library, do the following:
 
    .. figure:: img/open_commnad_shell.png
 
-#. If you are using QGIS from `Boundless Desktop`_ installation, you can simply\
+#. If you are using QGIS from `Boundless Desktop`_ installation, you can simply
    run the following command::
 
      createreport

@@ -15,7 +15,7 @@ To install the plugin:
 #. Open QGIS.
 #. Go to :menuselection:`Plugins --> Install and manager plugins`.
 #. Select the :guilabel:`All` tab.
-#. Type the name of the plugin in the :guilabel:`search` bar to filter list of plugins.
+#. Type the name of the plugin in the :guilabel:`search` bar to filter the list of plugins.
 #. Select the plugin from the list.
 #. Click :guilabel:`Install plugin`.
 
