@@ -17,7 +17,7 @@ Using QGIS's interface
 ----------------------
 
 In QGIS, to use the *Support Tool*, click the :menuselection:`Help -->
-Troubleshooting Information` menu itme.
+Boundless support tool` menu item.
 
 .. figure:: img/open_report_tool.png
 
@@ -26,9 +26,8 @@ opens, already displaying all information that was collected.
 
 .. figure:: img/diagnostics_dialog.png
 
-The report is saved automatically in your file system, in the
-``[your_user_folder]/.qgis2/reports`` folder. You can open it with the
-default text editor by clicking the provided link.
+The report is saved automatically in your file system, in your home folder. You
+can open it with the default text editor by clicking the provided link.
 
 You can also copy the full report by clicking the :guilabel:`Copy to clipboard`
 button.
@@ -49,21 +48,25 @@ To run the report tool library, do the following:
 
    .. figure:: img/open_commnad_shell.png
 
-#. Move to the folder where you have the installed the plugin (usually
-   [your_user_folder]/.qgis2/python/plugin/reportingtool).
+#. If you are using QGIS from `Boundless Desktop`_ installation, you can simply\
+   run the following command::
+
+     createreport
+
+#. If you are using QGIS from the community installers, move to the
+   profile folder where you have installed the plugin.
 
    On Windows, type::
 
-     cd %userprofile%\.qgis2\python\plugins\reportingtool
+     cd %userprofile%\AppData\Roaming\QGIS\QGIS3\profiles\<profile_name>\python\plugins\reportingtool
 
    On Mac OX or Linux, type::
 
-     cd ~/.qgis2/python/plugins/reporttingtool
+     cd ~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/reportingtool
 
-#. The, run the following command::
+   Then, run the following command::
 
      python createreport.py
 
-That will create a new report in the reports folder
-(``[your_user_folder]/.qgis2/reports``), just like the plugin does when used
+The command will create a new report in your home folder, just like the plugin does when used
 from inside QGIS.
