@@ -23,7 +23,6 @@ declare -a SECTIONS=(
 "-System information" )
 
 declare -a SUB_SECTIONS=(
-"@@-Active C++ plugins"
 "@@-Available Python plugins"
 "@@-Active Python plugins"
 "@@-Python version"
