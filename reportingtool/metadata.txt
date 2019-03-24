@@ -4,7 +4,7 @@ description=Support tool for Boundless Desktop, this plugin collects system info
 about=<p></p>
 category=Plugins
 qgisMinimumVersion=3.0
-version=1.0
+version=1.0.1
 
 author=Boundless
 email=info@boundlessgeo.com
