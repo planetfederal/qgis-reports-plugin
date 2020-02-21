@@ -12,6 +12,8 @@ import sys
 import fnmatch
 import zipfile
 import shutil
+import json
+from collections import defaultdict
 
 from paver.easy import *
 # this pulls in the sphinx target
