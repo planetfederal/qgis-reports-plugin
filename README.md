@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/boundlessgeo/qgis-reports-plugin.svg?branch=master)](https://travis-ci.org/boundlessgeo/qgis-reports-plugin)
+# QGIS Reporting tool
 
 #QGIS Reporting tool
 

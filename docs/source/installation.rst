@@ -1,4 +1,5 @@
 .. (c) 2018 Boundless, http://boundlessgeo.com
+   (c) 2020 Planet, http://planet.com
    This code is licensed under the GPL 2.0 license.
 
 Installation
