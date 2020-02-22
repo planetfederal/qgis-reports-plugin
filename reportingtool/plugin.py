@@ -54,7 +54,7 @@ class ReportingTool(object):
 
     def initGui(self):
         icon = QIcon(os.path.dirname(__file__) + "reportingtool.png")
-        self.action = QAction(icon, "Boundless Support Tool", self.iface.mainWindow())
+        self.action = QAction(icon, "QGIS Support Tool", self.iface.mainWindow())
         self.action.setObjectName("startreportingtool")
         self.action.triggered.connect(self.run)
 

@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="infoLabel">
      <property name="text">
-      <string>Details about your system and Boundless Desktop installation are listed belo</string>
+      <string>Details about your system and QGIS installation are listed below</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

@@ -1,6 +1,6 @@
 [general]
 name=Support tool
-description=Support tool for Boundless Desktop, this plugin collects system information for support requests.
+description=Support tool for QGIS this plugin collects system information for support requests.
 about=<p></p>
 category=Plugins
 qgisMinimumVersion=3.0
@@ -11,7 +11,7 @@ email=info@federal.planet.com
 
 roles=desktop-qgis-plugin-dev
 
-icon=icons/desktop.svg
+#icon=icons/desktop.svg
 
 tags=planet
 

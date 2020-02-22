@@ -92,3 +92,5 @@ ENV/
 reportingtool/ext-libs/
 reportingtool.zip
 reportingtool/extlibs/
+
+reportingtool/docs/html

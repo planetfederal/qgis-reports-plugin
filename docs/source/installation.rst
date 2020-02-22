@@ -7,10 +7,6 @@ Installation
 
 The **Support tool** plugin is available in the QGIS official Plugin Repository.
 
-.. note::
-
-   If you are using QGIS from `Boundless Desktop`_ installation, the **Support tool** plugin is installed by default.
-
 To install the plugin:
 
 #. Open QGIS.
@@ -21,5 +17,3 @@ To install the plugin:
 #. Click :guilabel:`Install plugin`.
 
 .. For instructions on how to install QGIS plugins, please refer to `QGIS Users manual <https://docs.qgis.org/latest/en/docs/user_manual/plugins/plugins.html#qgis-plugins>`_.
-
-.. _Boundless Desktop: https://boundlessgeo.com/boundless-desktop-gis-software-mapping-solutions/

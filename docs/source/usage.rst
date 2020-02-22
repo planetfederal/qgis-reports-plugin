@@ -18,7 +18,7 @@ Using QGIS's interface
 ----------------------
 
 In QGIS, to use the *Support Tool*, click the :menuselection:`Help -->
-Boundless support tool` menu item.
+Support tool` menu item.
 
 .. figure:: img/open_report_tool.png
 
@@ -45,16 +45,7 @@ broken and QGIS itself cannot be started.
 
 To run the report tool library, do the following:
 
-#. From Boundless Desktop folder open the Console Shell.
-
-   .. figure:: img/open_commnad_shell.png
-
-#. If you are using QGIS from `Boundless Desktop`_ installation, you can simply
-   run the following command::
-
-     createreport
-
-#. If you are using QGIS from the community installers, move to the
+#. If you are using QGIS from the official installers, move to the
    profile folder where you have installed the plugin.
 
    On Windows, type::
