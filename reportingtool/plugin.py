@@ -4,8 +4,9 @@
 ***************************************************************************
     __init__.py
     ---------------------
-    Date                 : November 2016
-    Copyright            : (C) 2016 Boundless, http://boundlessgeo.com
+    Date                 : November 2016, February 2020
+    Copyright            : 2016 Boundless, http://boundlessgeo.com
+                           2020 Planet Inc, https://planet.com
 ***************************************************************************
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -17,11 +18,8 @@
 """
 from builtins import object
 
-__author__ = 'Boundless'
-__date__ = 'November 2016'
-__copyright__ = '(C) 2016 Boundless, http://boundlessgeo.com'
-
 # This will get replaced with a git SHA1 when you do a git archive
+__revision__ = '$Format:%H$'
 
 import os
 import sys

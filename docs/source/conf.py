@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Support tool'
-copyright = u'2016, Boundless Spatial'
+copyright = u'2020, Planet Inc.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -197,7 +197,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'reporting_tool.tex', u'Support tool Documentation',
-   u'Boundless', 'manual'),
+   u'Planet', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -232,7 +232,7 @@ rst_epilog = """
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', '[pluginshortname]', u'Support tool Documentation',
-     [u'Boundless'], 1)
+     [u'Planet'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -246,7 +246,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', '[pluginshortname]', u'Support tool plugin Documentation',
-   u'Boundless', u'SupportToolQGISPlugin', 'One line description of project.',
+   u'Planet', u'SupportToolQGISPlugin', 'One line description of project.',
    'Miscellaneous'),
 ]
 

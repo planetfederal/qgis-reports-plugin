@@ -1,5 +1,5 @@
 # Tests for the QGIS Tester plugin. To know more see
-# https://github.com/boundlessgeo/qgis-tester-plugin
+# https://github.com/planetfederal/qgis-tester-plugin
 
 import sys
 import unittest

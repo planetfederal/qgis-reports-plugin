@@ -6,18 +6,18 @@ category=Plugins
 qgisMinimumVersion=3.0
 version=1.0.1
 
-author=Boundless
-email=info@boundlessgeo.com
+author=Planet
+email=info@federal.planet.com
 
 roles=desktop-qgis-plugin-dev
 
 icon=icons/desktop.svg
 
-tags=boundless
+tags=planet
 
-homepage=http://boundlessgeo.com
-tracker=https://github.com/boundlessgeo/qgis-reportingtool-plugin/issues
-repository=https://github.com/boundlessgeo/qgis-reportingtool-plugin
+homepage=http://planet.com
+tracker=https://github.com/planetfederal/qgis-reportingtool-plugin/issues
+repository=https://github.com/planetfederal/qgis-reportingtool-plugin
 
 experimental=False
 deprecated=False
