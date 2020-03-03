@@ -26,6 +26,7 @@ import subprocess
 
 from qgis.PyQt import uic
 from qgis.PyQt.QtWidgets import QApplication, QSizePolicy
+from qgis.core import Qgis
 from qgis.gui import QgsMessageBar
 
 WIDGET, BASE = uic.loadUiType(
@@ -51,7 +52,7 @@ class ReportDialog(BASE, WIDGET):
     def copyToClipboard(self):
         clipboard = QApplication.clipboard()
         clipboard.setText(self.textBrowser.toPlainText())
-        self.bar.pushMessage("", "Report text was copied to the clipboard", level=QgsMessageBar.SUCCESS, duration=5)
+        self.bar.pushMessage("", "Report text was copied to the clipboard", level=Qgis.Info, duration=5)
 
     def openReportFile(self):
         if sys.platform.startswith('darwin'):
