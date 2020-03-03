@@ -8,15 +8,17 @@ The report text is shown in the dialog, and also saved to a file in your filesys
 
 Use the *Copy to clipboard* button to copy the content of the text panel.
 
+**NOTE: You may wish to *sanitize* any sensitive information from the report prior to sharing, or when posting to any public mailing list or issue tracker.**
+
 # Creating a report from outside QGIS
 
-The reporting plugin uses a library to collect the information need for the report. This library can be called from outside of QGIS, so you can collect that information even if your QGIS installation is broken and QGIS itself cannot be started.
+The reporting plugin uses a library to collect the information need for the report. This library can be called from *outside of QGIS*, so you can collect that information even if your QGIS installation is broken and QGIS itself cannot be started.
 
 To do so, do the following:
 
-- open a console. It has to be a console that uses the same Python as QGIS, not the system one. For instance, if you installed QGIS in Windows using OSGeo4W, use the OSGeo4W shell.
+- Open a console. It has to be a console that uses the same Python as QGIS, not the system one. For instance, if you installed QGIS in Windows using OSGeo4W, use the OSGeo4W shell.
 
-- move to the folder where you have installed the plugin (usually `[your_profile_folder]/python/plugins/reportingtool/extlibs/qgissysinfo`) and run
+- Move to the folder where you have installed the plugin (usually `[your_profile_folder]/python/plugins/reportingtool/extlibs/qgissysinfo`) and run
 
 ```
 python createreport.py
